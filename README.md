@@ -7,8 +7,6 @@ Overview
 
 Paws adds Vim-like keyboard shortcuts to the AWS Management Console.
 
-<img src="https://raw.github.com/tombenner/paws/master/example.gif" />
-
 Installation
 ------------
 
@@ -23,46 +21,36 @@ Open the default view of a service.
 
 <table>
   <tr><td>Home</td><td>home</td></tr>
-  <tr><td>CloudTrail</td><td>sct</td></tr>
-  <tr><td>EC2</td><td>se2</td></tr>
-  <tr><td>ElastiCache</td><td>sec</td></tr>
-  <tr><td>IAM</td><td>sia</td></tr>
-  <tr><td>Redshift</td><td>sre</td></tr>
-  <tr><td>RDS</td><td>srd</td></tr>
-  <tr><td>Route 53</td><td>sr5</td></tr>
-  <tr><td>S3</td><td>ss3</td></tr>
-  <tr><td>VPC</td><td>svp</td></tr>
+  <tr><td>CloudTrail</td><td>ct</td></tr>
+  <tr><td>EC2</td><td>ecé</td></tr>
+  <tr><td>IAM</td><td>iam</td></tr>
+  <tr><td>Route 53</td><td>r("</td></tr>
+  <tr><td>RDS</td><td>rds</td></tr>
+  <tr><td>Redshift Serverless</td><td>red</td></tr>
+  <tr><td>DynamoDB</td><td>ddb</td></tr>
+  <tr><td>S3</td><td>s"</td></tr>
+  <tr><td>Parameter Store</td><td>ssm</td></tr>
+  <tr><td>Secrets Manager</td><td>sec</td></tr>
+  <tr><td>Api Gateway</td><td>gw</td></tr>
+  <tr><td>SQS</td><td>sqs</td></tr>
+  <tr><td>SNS</td><td>sns</td></tr>
+  <tr><td>State Machines</td><td>stf</td></tr>
+  <tr><td>VPC</td><td>vpc</td></tr>
+  <tr><td>Cloudformation</td><td>cfn</td></tr>
+  <tr><td>Cloudfront</td><td>cfr</td></tr>
+  <tr><td>Lakeformation</td><td>ff</td></tr>
+  <tr><td>Glue</td><td>glu</td></tr>
+  <tr><td>Athena</td><td>ath</td></tr>
   <tr><td>Lambda</td><td>da</td></tr>
-  <tr><td>Cloudformation</td><td>cft</td></tr>
+  <tr><td>ECR</td><td>ecr</td></tr>
+  <tr><td>ECS</td><td>ecs</td></tr>
+  <tr><td>EMR</td><td>emr</td></tr>
 </table>
 
-### Pages
+Author
+-------
 
-Open a specific page within a service.
-
-<table>
-  <tr><td>AMIs</td><td>pam</td></tr>
-  <tr><td>EBS</td><td>peb</td></tr>
-  <tr><td>ELBs</td><td>pel</td></tr>
-  <tr><td>Security Groups</td><td>psg</td></tr>
-</table>
-
-### Sidebar navigation
-
-Use the left sidebar navigation menu.
-
-<table>
-  <tr><td>Select next nav link</td><td>j</td></tr>
-  <tr><td>Select previous nav link</td><td>k</td></tr>
-  <tr><td>Click on selected nav link</td><td>return</td></tr>
-</table>
-
-### Miscellaneous
-
-<table>
-  <tr><td>Show shortcuts</td><td>?</td></tr>
-  <tr><td>Focus search box</td><td>/</td></tr>
-</table>
+- Tom Benner [Github](https://github.com/tombenner) [Repo](https://github.com/tombenner/paws)
 
 License
 -------

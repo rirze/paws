@@ -23,35 +23,34 @@ Paws.App = (function () {
         'home': {href: '/console'},
         // Services
         'ct': {href: '/cloudtrail/home#/events'},
-        'ec2': {href: '/ec2/v2/home#Instances:sort=desc:launchTime'},
-        'sec': {href: '/elasticache/home#cache-clusters:'},
-        'iam': {href: '/iam/home#home'},
-        'r53': {href: '/route53/home#hosted-zones:'},
+        'ecé': {href: '/ec2/v2/home#Instances'},
+      	// Region redirect issue on "iam"
+        'iam': {href: '/iam/home'},
+        'r("': {href: '/route53/home#hosted-zones:'},
         'rds': {href: '/rds/home#dbinstances:'},
-        'red': {href: '/redshift/home#cluster-list:'},
-        'ss3': {href: '/s3/home'},
+        'red': {href: '/redshift/home#serverless-dashboard'},
+        'ddb': {href: '/dynamodbv2/home#tables'},
+        's"': {href: '/s3/home'},
+        'ssm': {href: '/systems-manager/parameters/'},
+        'sec': {href: '/secretsmanager/listsecrets'},
+        'gw': {href: '/apigateway/main/apis'},
+        'sqs': {href: '/sqs/home'},
+        'sns': {href: '/sns/home#/topics'},
+        'stf': {href: '/states/home#/statemachines'},
         'vpc': {href: '/vpc/home'},
-        'cft': {href: '/cloudformation/home'},
+        'cfn': {href: '/cloudformation/home'},
+        'cfr': {href: '/cloudfront/home#/distributions'},
+        'ff': {href: '/lakeformation/home#databases'},
+        'glu': {href: '/glue/home#/v2/data-catalog/databases'},
+        'ath': {href: '/athena/home#/query-editor'},
         'da': {href: '/lambda/home'},
-        // Pages
-        'img': {href: '/ec2/v2/home#Images:sort=name'},
-        'vol': {href: '/ec2/v2/home#Volumes:sort=desc:createTime'},
-        'elb': {href: '/ec2/v2/home#LoadBalancers:'},
-        'scg': {href: '/ec2/v2/home#SecurityGroups:sort=groupId'},
-        // Navbar
-        'j': {func: ['navbar', 'next']},
-        'k': {func: ['navbar', 'prev']},
-        'l': {func: ['navbar', 'select']},
-        'return': {func: ['navbar', 'select']}, // This doesn't work on some services
-        // Miscellaneous
-        '/': {focus: '.gwt-TextBox:first'},
-        '?': {open: 'https://github.com/tombenner/paws#shortcuts'},
-        // lambda searchbox ???? WIP
-        'lam': {focus: '.inputAndSuggestions.input'}
+        'bat': {href: '/batch/home#jobs'},
+      	'ecr': {href: '/ecr/private-registry/repositories'},
+      	'emr': {href: '/emr/home#/clusters'},
+       	'ecs': {href: '/ecs/v2/clusters'}
     };
 
     self.init = function () {
-        self.navbar = new Paws.Navbar();
         self.initCommands();
         self.log('Initialized');
     };
@@ -65,22 +64,6 @@ Paws.App = (function () {
                 callback = function () {
                     self.log('Redirecting to ' + value['href']);
                     window.location.href = value['href'];
-                };
-            } else if (value['open']) {
-                callback = function () {
-                    self.log('Opening ' + value['open']);
-                    window.open(value['open']);
-                };
-            } else if (value['focus']) {
-                callback = function () {
-                    self.log('Selecting ' + value['focus']);
-                    jQuery(value['focus']).focus();
-                };
-            } else if (value['func']) {
-                callback = function () {
-                    self.log('Calling func');
-                    var func = value['func'];
-                    self[func[0]][func[1]]();
                 };
             } else {
                 self.log('Invalid callback');
@@ -99,65 +82,6 @@ Paws.App = (function () {
     self.init();
 
     return self;
-});
-
-Paws.Navbar = (function () {
-    var self = this;
-
-    self.select = function () {
-        var selectedAnchor = self.getSelectedAnchor();
-        if (selectedAnchor.length == 0) {
-            return;
-        }
-        // The [0] is necessary for the click to work on RDS
-        selectedAnchor[0].click();
-    };
-
-    self.unfocus = function () {
-        var selectedAnchor = self.getSelectedAnchor();
-        if (selectedAnchor.length == 0) {
-            return;
-        }
-        selectedAnchor.blur();
-        selectedAnchor.removeClass('ak-navbar-selected');
-        selectedAnchor.css('background-color', '');
-    };
-
-    self.next = function () {
-        self.anchors = jQuery('.gwt-Anchor');
-        var selectedAnchor = self.getSelectedAnchor();
-        if (selectedAnchor.length == 0) {
-            self.selectAnchor(self.anchors.first());
-        } else {
-            var index = self.anchors.index(selectedAnchor);
-            var anchorToSelect = self.anchors.eq(index + 1);
-            self.selectAnchor(anchorToSelect);
-        }
-    };
-
-    self.prev = function () {
-        self.anchors = jQuery('.gwt-Anchor');
-        var selectedAnchor = self.getSelectedAnchor();
-        if (selectedAnchor.length == 0) {
-            self.selectAnchor(self.anchors.last());
-        } else {
-            var index = self.anchors.index(selectedAnchor);
-            var anchorToSelect = self.anchors.eq(index - 1);
-            self.selectAnchor(anchorToSelect);
-        }
-    };
-
-    self.getSelectedAnchor = function () {
-        return self.anchors.filter('.ak-navbar-selected:first');
-    };
-
-    self.selectAnchor = function (anchor) {
-        self.anchors.removeClass('ak-navbar-selected');
-        self.anchors.css('background-color', '');
-        anchor.css('background-color', 'LightCyan');
-        anchor.addClass('ak-navbar-selected');
-        anchor.focus();
-    };
 });
 
 new Paws.App();

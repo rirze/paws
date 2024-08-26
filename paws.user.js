@@ -23,14 +23,14 @@ Paws.App = (function () {
         'home': {href: '/console'},
         // Services
         'ct': {href: '/cloudtrail/home#/events'},
-        'ecé': {href: '/ec2/v2/home#Instances'},
+        'ec2': {href: '/ec2/v2/home#Instances'},
       	// Region redirect issue on "iam"
         'iam': {href: '/iam/home'},
-        'r("': {href: '/route53/home#hosted-zones:'},
+        'r53"': {href: '/route53/home#hosted-zones:'},
         'rds': {href: '/rds/home#dbinstances:'},
         'red': {href: '/redshift/home#serverless-dashboard'},
         'ddb': {href: '/dynamodbv2/home#tables'},
-        's"': {href: '/s3/home'},
+        's3': {href: '/s3/home'},
         'ssm': {href: '/systems-manager/parameters/'},
         'sec': {href: '/secretsmanager/listsecrets'},
         'gw': {href: '/apigateway/main/apis'},
